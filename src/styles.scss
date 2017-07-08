@@ -1,4 +1,8 @@
 $palette-ink: hsl(200, 20%, 20%);
+$cell-bg: hsl(0, 0%, 98%);
+$today-bg: $cell-bg;
+$tooltip-bg: $palette-ink;
+$tooltip-color: #fff;
 
 body {
   font: 500 16px 'Open Sans';
@@ -22,7 +26,6 @@ body {
 
 .calendar {
   width: 100%;
-  // border-collapse: collapse;
 
   th {
     font-weight: 600;
@@ -34,15 +37,25 @@ body {
   }
 
   tbody td {
-    // border: 2px solid $palette-ink;
     box-sizing: border-box;
     vertical-align: top;
     padding: 0.5em 0.75em;
-    background: hsl(0, 0%, 98%);
+    background: $cell-bg;
     font-size: 0.8rem;
     text-align: left;
     width: calc(100% / 7);
     height: 8em;
+    cursor: pointer;
+    position: relative;
+
+    &:hover .tooltip {
+      display: block;
+    }
+    
+    &.today {
+      background: $today-bg;
+      border: 1px solid mix(#fff, $palette-ink, 40%);
+    }
   }
 }
 
@@ -53,9 +66,33 @@ body {
 
 .date {
   margin-bottom: 1em;
-  // font-weight: 600;
 }
 
 .class {
   font-weight: 600;
+}
+
+.tooltip {
+  display: none;
+  position: absolute;
+  background: $tooltip-bg;
+  color: $tooltip-color;
+  padding: 0.5em 0.7em;
+  border-radius: 5px;
+  top: 5em;
+  z-index: 1;
+  width: 250px;
+}
+
+.ground-tooltip,
+.standing-tooltip {
+  display: block;
+}
+
+.ground-tooltip::before {
+  content: 'Ground: ';
+}
+
+.standing-tooltip::before {
+  content: 'Standing: ';
 }
