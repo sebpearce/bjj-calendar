@@ -1,0 +1,61 @@
+$palette-ink: hsl(200, 20%, 20%);
+
+body {
+  font: 500 16px 'Open Sans';
+  color: $palette-ink;
+  margin: 0;
+}
+
+#root {
+  height: inherit;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.calendar-container {
+  width: 60%;
+  max-width: 800px;
+}
+
+.calendar {
+  width: 100%;
+  // border-collapse: collapse;
+
+  th {
+    font-weight: 600;
+    padding: 1em 0;
+  }
+
+  .month-name {
+    font-size: 21px;
+  }
+
+  tbody td {
+    // border: 2px solid $palette-ink;
+    box-sizing: border-box;
+    vertical-align: top;
+    padding: 0.5em 0.75em;
+    background: hsl(0, 0%, 98%);
+    font-size: 0.8rem;
+    text-align: left;
+    width: calc(100% / 7);
+    height: 8em;
+  }
+}
+
+.date,
+.class {
+  display: block;
+}
+
+.date {
+  margin-bottom: 1em;
+  // font-weight: 600;
+}
+
+.class {
+  font-weight: 600;
+}
